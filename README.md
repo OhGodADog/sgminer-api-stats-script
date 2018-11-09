@@ -8,6 +8,7 @@ Requires package `nmap`.
 Usage:
 
 `chmod +x sgminer-api-stats-pull.sh`
+
 `watch -n30 ./sgminer-api-stats-pull.sh`
 
 By default, the script searches the IP range `192.168.0.0/24`. If your mining rigs are on a different network, simply open the script, and change on line 6 the IP range to your desired one.
