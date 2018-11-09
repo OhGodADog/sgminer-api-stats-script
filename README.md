@@ -16,9 +16,12 @@ By default, the script searches the IP range `192.168.0.0/24`. If your mining ri
 Different SGMiner forks may have different API implementation, and may not work as expected.
 
 Supported miners so far are:
-TeamRedMiner
-sgminer-gm
-Forks, based on the sgminer-5.4, with API 4.0 support.
+
+`TeamRedMiner`
+
+`sgminer-gm`
+
+Forks, based on the `sgminer-5.4`, with `API 4.0` support.
 
 Stats on sgminer with ADL support are not edited, so they will show up on 1 line for each GPU.
 
