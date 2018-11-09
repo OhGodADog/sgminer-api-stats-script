@@ -57,7 +57,7 @@ do
 		sed -i 's/STATUS/\n&/g' log"$w".txt
 		sed -i '1d' log"$w".txt
 		sed -i 's/^.*GPU=/GPU=/' log"$w".txt
-		sed -i 's/Temperature=0.00.*KHS//' log"$w".txt
+		sed -i 's/Temperature=0.00.*Powertune=[0-9],//' log"$w".txt
 		sed -i -r 's/Utility=[0-9].*Rejected%=[0-9]\.[0-9]//' log"$w".txt
 		echo -e "\nHost identity: ${SGMINER_HOSTS[w]}" >> log"$w".txt
 		echo -e "\nDetected miner: ${VERSION_CHECK[w]}" >> log"$w".txt
