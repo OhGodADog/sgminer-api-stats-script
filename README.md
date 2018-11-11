@@ -11,7 +11,11 @@ Usage:
 
 `watch -n30 ./sgminer-api-stats-pull.sh`
 
-By default, the script searches the IP range `192.168.0.0/24`. If your mining rigs are on a different network, simply open the script, and change on line 6 the IP range to your desired one.
+By default, the script searches for either a `hosts.txt` file, or the IP range `192.168.0.0/24`. If your mining rigs are on a different network, simply open the script, and change on line 6 the IP range to your desired one, or edit the `hosts.txt`.
+
+Note, the `hosts.txt` IP addresses, must be separated by newline. 
+
+WARNING: IF ANY of the IP addresses in the `hosts.txt` are unreachable (invalid IP or rig offline), the script will NOT work. If you are having stability issues, do not use the `hosts.txt` method (simply delete the file).
 
 Different SGMiner forks may have different API implementation, and may not work as expected.
 
