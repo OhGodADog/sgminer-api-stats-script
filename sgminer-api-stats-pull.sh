@@ -3,7 +3,15 @@
 rm -rf log*.txt
 
 
-SGMINER_HOSTS=($(nmap -p4028 192.168.0.0/24 -oG - | grep 4028/open | egrep -o "([0-9]{1,3}\.){3}[0-9]{1,3}"))
+if [[ -s hosts.txt ]];
+then
+	echo "Host file found, loading hosts..."
+	IFS=$'\n' SGMINER_HOSTS=($(cat hosts.txt))
+else
+	echo "No host file found, using nmap to find all hosts in the network"
+	SGMINER_HOSTS=($(nmap -p4028 192.168.0.0/24 -oG - | grep 4028/open | egrep -o "([0-9]{1,3}\.){3}[0-9]{1,3}"))
+fi
+
 
 if [ ${#SGMINER_HOSTS[@]} -eq 0 ];
 then
@@ -26,7 +34,7 @@ done
 
 
 if [ ${#VERSION_CHECK[@]} -eq 0 ];
-	then
+then
 	echo "Miner is not sgminer fork. Exiting."
 	exit 1
 
