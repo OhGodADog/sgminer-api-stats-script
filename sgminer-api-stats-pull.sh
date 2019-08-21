@@ -15,7 +15,15 @@ then
 	IFS=$'\n' SGMINER_HOSTS=($(cat hosts.txt))
 else
 	echo "No host file found, using nmap to find all hosts in the network"
-	SGMINER_HOSTS=($(nmap -p$PORT $LOCAL_NETWORK -oG - | grep $PORT/open | egrep -o "([0-9]{1,3}\.){3}[0-9]{1,3}"))
+	nmap -V
+
+	if [[ $? -ne 0 ]]
+	then
+		echo -e "Nmap is not installed, exiting."
+		exit 1
+	else
+		SGMINER_HOSTS=($(nmap -p$PORT $LOCAL_NETWORK -oG - | grep $PORT/open | egrep -o "([0-9]{1,3}\.){3}[0-9]{1,3}"))
+	fi
 fi
 
 
