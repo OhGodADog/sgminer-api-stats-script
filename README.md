@@ -1,21 +1,19 @@
 # sgminer-api-stats-script
 A Shell script for pulling stats from the SGMiner API
 
-In case you want to monitor your rigs, which are running a SGMiner miner variant, from a Linux machine.
+In case you want to monitor your rigs, which are running a SGMiner miner variant, from a Linux machine with a simple shell script.
 
-Requires package `nmap`.
+Requires package `nmap` if you do not know your rigs addresses on the LAN.
 
 Usage:
 
 `chmod +x sgminer-api-stats-pull.sh`
 
-`watch -n30 ./sgminer-api-stats-pull.sh`
+`watch -n30 ./sgminer-api-stats-pull.sh` or `./sgminer-api-stats-pull.sh`
 
-By default, the script searches for either a `hosts.txt` file, or the IP range `192.168.0.0/24`. If your mining rigs are on a different network, simply open the script, and change on line 6 the IP range to your desired one, or edit the `hosts.txt`.
+By default, the script searches for either a `hosts.txt` file, or the IP range `192.168.0.0/24`. If your mining rigs are on a different network, simply open the script, and change on line 6 the `API_PORT` and on line 7 the IP range to your desired one, or edit the `hosts.txt`.
 
 Note, the `hosts.txt` IP addresses, must be separated by newline. 
-
-WARNING: IF ANY of the IP addresses in the `hosts.txt` are unreachable (invalid IP or rig offline), the script will NOT work. If you are having stability issues, do not use the `hosts.txt` method (simply delete the file).
 
 Different SGMiner forks may have different API implementation, and may not work as expected.
 
@@ -26,11 +24,6 @@ Supported miners so far are:
 `sgminer-gm`
 
 Forks, based on the `sgminer-5.4`, with `API 4.0` support.
-
-Stats on sgminer with ADL support are not edited, so they will show up on 1 line for each GPU.
-
-
-
 
 
 This script is intended for small networks.
