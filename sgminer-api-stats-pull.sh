@@ -54,6 +54,12 @@ do
 	true $(( p++ ))
 done
 
+if [[ ${#AVAILABLE_HOSTS[@]} -eq 0 ]]
+then
+	echo -e "All defined hosts are unreachable. Exiting."
+	exit 1
+fi
+
 ## Get each host miner and GPU information
 
 GPU_COUNT=()
@@ -132,5 +138,5 @@ cat log*.txt
 
 if [[ ${#UNAVAILABLE_HOSTS[@]} -ne 0 ]]
 then
-	echo -e "\nThe following pre-defined hosts were unavailable: ${UNAVAILABLE_HOSTS[@]}"
+	echo -e "\nThe following pre-defined hosts were unreachable: ${UNAVAILABLE_HOSTS[@]}"
 fi
